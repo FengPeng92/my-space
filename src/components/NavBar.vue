@@ -14,7 +14,7 @@
           <router-link class="nav-link" :to="{name: 'contacts'}">Contacts</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :to="{name: 'discover'}">Discover</router-link>
+          <router-link class="nav-link" :to="{name: 'discover', params: {userId: 2}}">Discover</router-link>
         </li>
       </ul>
 

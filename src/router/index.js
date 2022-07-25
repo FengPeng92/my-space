@@ -13,29 +13,33 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/contacts",
+    path: "/contacts/",
     name: "contacts",
     component: ContactsView,
   },
   {
-    path: "/discover",
+    path: "/discover/:userId/",
     name: "discover",
     component: DiscoverView,
   },
   {
-    path: "/login",
+    path: "/login/",
     name: "login",
     component: LoginView,
   },
   {
-    path: "/register",
+    path: "/register/",
     name: "register",
     component: RegisterView,
   },
   {
-    path: "/404",
+    path: "/404/",
     name: "404",
     component: NotFoundView,
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/404/",
   },
 ];
 
