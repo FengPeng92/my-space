@@ -6,9 +6,10 @@
                     <img class="img-fluid" src="https://cdn.acwing.com/media/user/profile/photo/143072_lg_aee4744060.jpg" />
             </div>
             <div class="col-9">
-                <div class="username">Feng Peng</div>
-                <div class="followers">Followers: 43</div>
-                <button type="button" class="btn btn-secondary btn-sm">Follow</button>
+                <div class="username">{{fullName}}</div>
+                <div class="followers">Followers: {{user.followers}}</div>
+                <button @click= "follow" v-if="!user.is_followed" type="button" class="btn btn-secondary btn-sm">Follow</button>
+                <button @click= "unfollow" v-if="user.is_followed" type="button" class="btn btn-secondary btn-sm">Unfollow</button>
             </div>
         </div>
     </div>
@@ -17,11 +18,31 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 export default {
     name: "UserInfo",
-    components: {
+    props: {
+        user: {
+            type: Object, 
+            require: true,
+        }
+    },
+    setup(props, context) {
+        let fullName = computed(() => props.user.lastname + ' ' + props.user.firstname);
 
+        const follow = () => {
+            context.emit('follow');
+        }
+         const unfollow = () => {
+            context.emit('unfollow');
+        }
+        return {
+            fullName,
+            follow,
+            unfollow
+        }
     }
+
 }
 </script>
 
